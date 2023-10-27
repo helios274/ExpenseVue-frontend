@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .nav-brand {
+    @apply dark:text-primary text-xl font-bold font-playpen;
+  }
+  .nav-link {
+    @apply dark:text-primary hover:bg-quaternary hover:text-primary dark:hover:bg-secondary dark:hover:text-quaternary mx-1 rounded-full px-3 py-1 text-[0.95rem] font-medium transition duration-100 ease-in-out sm:mx-2 sm:px-4 sm:py-2 sm:text-base;
+  }
+  .nav-link.active {
+    @apply text-primary bg-quaternary dark:text-quaternary dark:bg-secondary;
+  }
+  .field-error-msg {
+    @apply text-sm font-medium text-red-500;
+  }
+  .input-label {
+    @apply dark:text-secondary font-sans text-base font-semibold md:text-lg;
+  }
+}
+
+@layer components {
+  .theme-toggler {
+    @apply dark:text-primary ml-2 pt-0.5 text-xl sm:text-2xl;
+  }
+  .header {
+    @apply py-3 sm:py-4;
+  }
+  .footer {
+    @apply py-3 flex justify-center items-center mt-1 text-sm max-[380px]:text-xs;
+  }
+  .input {
+    @apply bg-secondary dark:bg-tertiary border-quaternary dark:border-secondary focus:bg-primary dark:focus:bg-quaternary dark:text-primary rounded-md border-2 px-2 py-1 text-base outline-none md:py-1.5 md:text-lg;
+  }
+  .input-password {
+    @apply bg-secondary dark:bg-tertiary border-quaternary dark:border-secondary focus:bg-primary dark:focus:bg-quaternary dark:text-primary flex-grow rounded-s-md border-2 border-e-0 px-2 py-1 text-base focus:outline-none md:py-1.5 md:text-lg;
+  }
+  .btn-primary-outline {
+    @apply border-quaternary dark:border-secondary text-quaternary dark:text-secondary hover:bg-quaternary hover:text-primary dark:hover:bg-secondary dark:hover:text-quaternary my-2 rounded-md border-2 bg-transparent px-3 py-1 font-sans text-base font-semibold transition duration-300 ease-in md:py-1.5 md:text-lg;
+  }
+  .password-toggle-btn {
+    @apply border-quaternary dark:border-secondary dark:text-secondary flex h-[36px] w-10 cursor-pointer items-center justify-center rounded-e-md border-y-2 border-e-2 text-lg md:h-[44px];
+  }
+  .pagination-container {
+    @apply flex w-fit items-center max-sm:text-sm border-2 rounded-lg border-quaternary dark:border-secondary;
+  }
+  .page-btn {
+    @apply text-quaternary max-sm:text-sm  border-quaternary dark:border-secondary border-t-0 border-b-0 hover:bg-secondary/40 dark:text-secondary dark:hover:bg-primary dark:hover:text-quaternary disabled:bg-quaternary/50 dark:disabled:bg-secondary/50 disabled:hover:text-quaternary dark:disabled:hover:text-secondary flex h-8 items-center justify-center bg-transparent px-3 max-sm:px-[9px] leading-tight;
+  }
+  .page-prev-btn {
+    @apply page-btn border-l-2;
+  }
+  .page-next-btn {
+    @apply page-btn border-l-2 rounded-r-[5px];
+  }
+  .page-input {
+    @apply h-full border-l-2 border-r-2 outline-none w-12 max-sm:w-11 pl-2 max-sm:text-sm font-medium text-quaternary border-quaternary dark:border-secondary bg-secondary focus:bg-primary dark:bg-tertiary dark:focus:bg-quaternary dark:text-primary;
+  }
+  .search-bar {
+    @apply border-quaternary dark:border-secondary flex h-full rounded-md border-[2px] md:w-[380px];
+  }
+  .search-input {
+    @apply bg-primary dark:bg-tertiary dark:text-primary focus:dark:bg-quaternary flex-grow rounded-l-md px-1 py-1 outline-none dark:rounded-l-[3px] md:py-2;
+  }
+  .search-btn {
+    @apply bg-quaternary text-secondary hover:bg-tertiary  dark:text-quaternary dark:bg-secondary rounded-r-[3px] px-4 font-medium;
+  }
+  .data-card {
+    @apply h-[9rem] max-sm:h-[7.8rem] p-2 shadow-md bg-secondary/25 text-quaternary font-mono dark:bg-tertiary dark:text-primary;
+  }
+  .data-card-title {
+    @apply flex justify-center mt-6 text-2xl max-sm:text-xl font-semibold;
+  }
+}
