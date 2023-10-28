@@ -27,7 +27,7 @@ const Header = () => {
         <div className="flex items-center ml-auto">
           {token !== "" ? (
             <>
-              <NavLink to="expenses" lassName="nav-link">
+              <NavLink to="expenses" className="nav-link">
                 Expense
               </NavLink>
               <button className="nav-link" onClick={handleLogout}>
