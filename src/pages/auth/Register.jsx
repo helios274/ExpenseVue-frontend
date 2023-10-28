@@ -53,7 +53,7 @@ const Register = () => {
   }
   return (
     <div className="flex justify-center">
-      <AuthCard title="Register with ExpenseVue">
+      <AuthCard title="Register with ExpenseVue" cardClass="shadow-lg">
         <form
           onSubmit={handleSubmit(registerHandler)}
           className="flex flex-col"

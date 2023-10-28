@@ -3,6 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.background {
+  position: relative;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./assets/images/home1.jpeg); /* Replace with your image URL */
+  background-size: cover;
+  filter: blur(3px); /* Adjust the blur amount as needed */
+  z-index: -1;
+  pointer-events: none; /* Prevent interaction with the pseudo-element */
+}
+
 @layer base {
   .nav-brand {
     @apply dark:text-primary text-xl font-bold font-playpen;
@@ -47,7 +65,7 @@
     @apply flex w-fit items-center max-sm:text-sm border-2 rounded-lg border-quaternary dark:border-secondary;
   }
   .page-btn {
-    @apply text-quaternary max-sm:text-sm  border-quaternary dark:border-secondary border-t-0 border-b-0 hover:bg-secondary/40 dark:text-secondary dark:hover:bg-primary dark:hover:text-quaternary disabled:bg-quaternary/50 dark:disabled:bg-secondary/50 disabled:hover:text-quaternary dark:disabled:hover:text-secondary flex h-8 items-center justify-center bg-transparent px-3 max-sm:px-[9px] leading-tight;
+    @apply text-quaternary max-sm:text-sm  border-quaternary dark:border-secondary border-t-0 border-b-0 hover:bg-quaternary hover:text-secondary dark:text-secondary disabled:bg-quaternary/50 dark:disabled:bg-secondary/50 disabled:hover:text-quaternary dark:disabled:hover:text-secondary flex h-8 items-center justify-center bg-transparent px-3 max-sm:px-[9px] leading-tight;
   }
   .page-prev-btn {
     @apply page-btn border-l-2;

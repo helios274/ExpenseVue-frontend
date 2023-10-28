@@ -12,7 +12,10 @@ export const addExpense = (token, data) => {
   return response;
 };
 
-export const getExpenses = (token, url) => {
+export const getExpenses = (
+  token,
+  url = `${import.meta.env.VITE_BACKEND_URL}/api/expenses/`
+) => {
   const response = fetch(url, {
     method: "GET",
     headers: {

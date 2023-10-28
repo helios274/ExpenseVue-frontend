@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../api/categories";
-import { getExpenseData } from "../../api/expenses";
+import { getExpenseData, getExpenses } from "../../api/expenses";
 import { addCategories } from "../../store/slices/categorySlice";
-import { updateDashboardData } from "../../store/slices/expenseSlice";
+import {
+  addExpenses,
+  updateDashboardData,
+} from "../../store/slices/expenseSlice";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import formatCurrency from "../../utils/formatCurrency";
@@ -18,7 +21,7 @@ const Dashboard = () => {
   const [totalAmountMonth, setTotalAmountMonth] = useState(
     dashboard.total_amount_month
   );
-  const [totalExpensesByCategory, setTotalExpensesByCategory] = useState(
+  const [totalExpensesByCategory] = useState(
     dashboard.total_expenses_by_category
   );
   const [labels, setLabels] = useState(
@@ -58,7 +61,7 @@ const Dashboard = () => {
         setBarAnimation("");
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [totalExpenses, totalAmount]);
 
   const fetchCategories = () => {
     const response = getCategories(token);
@@ -70,9 +73,24 @@ const Dashboard = () => {
       })
       .catch((error) => console.error(error));
   };
+
+  const fetchExpenses = () => {
+    const response = getExpenses(token);
+    response
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(addExpenses({ data: data }));
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    fetchExpenseData();
+  }, [totalExpenses, totalAmount]);
+
   useEffect(() => {
     fetchCategories();
-    fetchExpenseData();
+    fetchExpenses();
   }, []);
 
   defaults.maintainAspectRatio = false;
@@ -80,8 +98,10 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>{userData?.email}</h1>
-      <h1 className="text-3xl text-quaternary font-extrabold">Dashboard</h1>
+      <h1 className="dark:text-secondary">{userData?.email}</h1>
+      <h1 className="text-3xl text-quaternary dark:text-secondary font-extrabold">
+        Dashboard
+      </h1>
       <div className="grid sm:grid-cols-3 grid-cols-1 min-[380px]:grid-cols-2 gap-4 mt-4">
         <div className="data-card">
           <h1 className="text-base sm:text-lg font-semibold">Total Expenses</h1>

@@ -61,13 +61,15 @@ const Login = () => {
 
   return (
     <div className="flex justify-center">
-      <AuthCard title="Login">
-        <div>Test credentials:</div>
-        <div>
-          email: <span className="font-medium">test1@mail.com</span>
-        </div>
-        <div>
-          password: <span className="font-medium">test123</span>
+      <AuthCard title="Login" cardClass="shadow-lg">
+        <div className="dark:text-primary">
+          <div>Test credentials:</div>
+          <div>
+            email: <span className="font-medium">test1@mail.com</span>
+          </div>
+          <div>
+            password: <span className="font-medium">test123</span>
+          </div>
         </div>
         <form onSubmit={handleSubmit(loginHandler)} className="flex flex-col">
           <InputBox

@@ -92,12 +92,13 @@ const Expense = () => {
       });
   };
 
-  // fetchExpenses();
+  useEffect(() => {
+    fetchExpenseData();
+    fetchCategories();
+  }, [ok]);
 
   useEffect(() => {
     fetchExpenses(url);
-    fetchCategories();
-    fetchExpenseData();
   }, [ok, url]);
 
   return (
@@ -225,7 +226,7 @@ const Expense = () => {
                           className="page-input"
                         />
                         <button
-                          className="h-full w-12 max-sm:w-10 max-sm:text-sm bg-secondary hover:bg-secondary/25 font-medium text-quaternary"
+                          className="h-full w-12 max-sm:w-10 max-sm:text-sm bg-secondary hover:bg-quaternary hover:text-secondary font-medium text-quaternary"
                           onClick={() => {
                             setUrl(
                               `${
